@@ -1,9 +1,21 @@
 {
     "users": [
         {
-            "id": 197938737160650121793419540207668022027,
+            "id": 260173309176667778871815043493119724808,
+            "name": "Eleen",
+            "email": "peritaeleen@gmail.com",
+            "projects": []
+        },
+        {
+            "id": 41234457236937104893098610510750041287,
             "name": "Darrel",
-            "email": "darrel124568@gmail.com",
+            "email": "darrel@gmail.com",
+            "projects": []
+        },
+        {
+            "id": 326010367394871377741863611642180849584,
+            "name": "Martin",
+            "email": "martin@gmain.com",
             "projects": [
                 "CLI"
             ]
@@ -11,18 +23,12 @@
     ],
     "projects": [
         {
-            "id": 156574962848154861613257059921780758889,
+            "id": 176905345677203508649865694019583318341,
             "title": "CLI",
-            "due_date": "CLI",
-            "tasks": [
-                {
-                    "name": "document the code",
-                    "description": "Document the CLI code",
-                    "complete": false
-                }
-            ],
+            "due_date": "17-7-2026",
+            "tasks": [],
             "users": [
-                "Darrel"
+                "Martin"
             ]
         }
     ]

@@ -1,5 +1,6 @@
 from models.db import Database_manipulations
 from models.database_object import Database_obj
+from colorama import Fore
 
 class User(Database_obj):
     def __init__(self, name, email, projects: list = None):
@@ -15,13 +16,13 @@ class User(Database_obj):
     def add_user_to_database(name, email):
         data = Database_manipulations.load()
         if any(u["name"].lower() == name.lower() for u in data["users"]):
-            print(f"User '{name}' already exists.")
+            print(Fore.YELLOW + f"User '{name}' already exists.")
             return False
         
         new_user = User(name, email)
         data["users"].append(new_user.to_dict())
         Database_manipulations.save(data)
-        print(f"User '{name}' added successfully.")
+        print(Fore.GREEN + f"User '{name}' added successfully.")
         return True
 
     @staticmethod

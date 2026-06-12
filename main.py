@@ -3,6 +3,9 @@ from models.user import User
 from models.project import Project
 from models.task import Task
 from models.db import Database_manipulations
+from colorama import Fore
+from email_validator import validate_email, EmailNotValidError
+
 
 def main():
     parser = argparse.ArgumentParser(description="A commandline project management tool")
@@ -22,39 +25,43 @@ def main():
     #users
     if args.command == "users":
         if args.action == "add":
-            email = input("Enter user email: ")
-            User.add_user_to_database(args.name, email)
+            try:
+                email = validate_email(input(Fore.BLUE + "Enter user email: "), check_deliverability=False)
+                print(email.email)
+                User.add_user_to_database(args.name, email.email)
+            except EmailNotValidError:
+                print(Fore.RED + "invalid email format")
             
         elif args.action == "projects":
             projects = User.get_projects(args.name)
             if projects is not None:
                 print(f"\nProjects managed by {args.name}:")
                 for p in projects:
-                    print(f" - {p}")
+                    print(Fore.GREEN + f" - {p}")
             else:
-                print("User not found.")
+                print(Fore.RED + "User not found.")
                 
         elif args.action == "add-project":
-            project_name = input("Enter project name: ")
+            project_name = input(Fore.BLUE +"Enter project name: ")
             Project.link_user_and_project(args.name, project_name)
         elif args.action == "all":
             data = Database_manipulations.load()
             print("\nAll Users:")
             for u in data["users"]:
-                print(f" - Name: {u['name']}, email: {u["email"]}")
+                print(Fore.GREEN + f" - Name: {u['name']}, email: {u["email"]}")
 
 
     #projects
     elif args.command == "projects":
         if args.action == "add":
-            due_date = input("Enter the due date for the new project: ")
+            due_date = input(Fore.BLUE + "Enter the due date for the new project: ")
             Project.add_project_to_database(args.title, due_date)
 
         elif args.action == "all":
             data = Database_manipulations.load()
             print("\nAll Projects:")
             for p in data.get("projects", []):
-                print(f" - {p['title']} (Due: {p.get('due_date')})")
+                print(Fore.GREEN + f" - {p['title']} (Due: {p.get('due_date')})")
 
         elif args.action == "tasks":
             data = Database_manipulations.load()
@@ -63,9 +70,9 @@ def main():
                 print(f"\nTasks for '{args.title}':")
                 for t in project["tasks"]:
                     status = "Complete" if t["complete"] else "Pending"
-                    print(f"{t['name']}  {status}")
+                    print(Fore.GREEN + f"{t['name']}  {status}")
             else:
-                print("Project not found.")
+                print(Fore.RED + "Project not found.")
 
         elif args.action == "users":
             data = Database_manipulations.load()
@@ -73,21 +80,21 @@ def main():
             if project:
                 print(f"\nTeam Members on '{args.title}':")
                 for u in project["users"]:
-                    print(f" - {u}")
+                    print(Fore.GREEN + f" - {u}")
             else:
-                print("Project not found.")
+                print(Fore.RED + "Project not found.")
 
         elif args.action == "add-user":
-            user_name = input("Enter the username to add: ")
+            user_name = input(Fore.BLUE + "Enter the username to add: ")
             Project.link_user_and_project(user_name, args.title)
 
         elif args.action == "add-task":
-            task_name = input("Enter the new task: ")
-            description = input("add a description for the task: ")
+            task_name = input(Fore.BLUE + "Enter the new task: ")
+            description = input(Fore.BLUE + "add a description for the task: ")
             Task.add_task_to_project(args.title, task_name, description)
 
         elif args.action == "complete-task":
-            task_name = input("Enter task name to complete: ")
+            task_name = input(Fore.BLUE + "Enter task name to complete: ")
             Task.mark_as_complete(args.title, task_name)
 
 if __name__ == "__main__":
