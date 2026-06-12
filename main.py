@@ -10,8 +10,8 @@ def main():
 
     # Users Subparser
     user_parser = subparsers.add_parser("users")
-    user_parser.add_argument("action", choices=["add", "projects", "add-project"])
-    user_parser.add_argument("name", help="Name of the user")
+    user_parser.add_argument("action", choices=["add", "projects", "add-project", "all"])
+    user_parser.add_argument("--name", "-n", help="Name of the user")
 
     # Projects Subparser
     project_parser = subparsers.add_parser("projects")
@@ -37,6 +37,11 @@ def main():
         elif args.action == "add-project":
             project_name = input("Enter project name: ")
             Project.link_user_and_project(args.name, project_name)
+        elif args.action == "all":
+            data = Database_manipulations.load()
+            print("\nAll Users:")
+            for u in data["users"]:
+                print(f" - Name: {u['name']}, email: {u["email"]}")
 
 
     #projects

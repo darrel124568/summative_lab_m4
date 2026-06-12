@@ -1,7 +1,9 @@
 from models.db import Database_manipulations
+from models.database_object import Database_obj
 
-class Project:
+class Project(Database_obj):
     def __init__(self, title, due_date, tasks: list = None, users: list = None):
+        super().__init__()
         self.title = title
         self.due_date = due_date
         self.tasks = tasks if tasks is not None else []
@@ -9,6 +11,7 @@ class Project:
 
     def to_dict(self) -> dict:
         return {
+            "id": self.id,
             "title": self.title,
             "due_date": self.due_date,
             "tasks": self.tasks,

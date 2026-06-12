@@ -1,42 +1,24 @@
 {
     "users": [
         {
+            "id": 197938737160650121793419540207668022027,
             "name": "Darrel",
             "email": "darrel124568@gmail.com",
             "projects": [
-                "CLI",
-                "Read"
+                "CLI"
             ]
-        },
-        {
-            "name": "John",
-            "email": "johndoe@gmail.com",
-            "projects": []
         }
     ],
     "projects": [
         {
+            "id": 156574962848154861613257059921780758889,
             "title": "CLI",
-            "due_date": "15-07-2026",
+            "due_date": "CLI",
             "tasks": [
                 {
-                    "name": "Make a CLI tool",
-                    "description": "",
-                    "complete": true
-                }
-            ],
-            "users": [
-                "Darrel"
-            ]
-        },
-        {
-            "title": "Read",
-            "due_date": "7-7-2026",
-            "tasks": [
-                {
-                    "name": "Moringa School content",
-                    "description": "Read module 4 content",
-                    "complete": true
+                    "name": "document the code",
+                    "description": "Document the CLI code",
+                    "complete": false
                 }
             ],
             "users": [

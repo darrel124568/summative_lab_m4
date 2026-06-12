@@ -1,13 +1,15 @@
 from models.db import Database_manipulations
+from models.database_object import Database_obj
 
-class User:
+class User(Database_obj):
     def __init__(self, name, email, projects: list = None):
+        super().__init__()
         self.name = name
         self.email = email
         self.projects = projects if projects is not None else []
 
     def to_dict(self):
-        return {"name": self.name, "email": self.email, "projects": self.projects}
+        return {"id": self.id ,"name": self.name, "email": self.email, "projects": self.projects}
 
     @staticmethod
     def add_user_to_database(name, email):
