@@ -52,7 +52,7 @@ class Project(Database_obj):
             print(Fore.YELLOW + f"User '{username}' missing from records. Creating entry...")
             try:
                 email = validate_email(input(Fore.BLUE + f"Enter email for {username}: "), check_deliverability=False)
-                user = {"name": username, "email": email, "projects": []}
+                user = {"name": username, "email": email.email, "projects": []}
                 data["users"].append(user)
             except EmailNotValidError:
                 print(Fore.RED + "Email not valid")

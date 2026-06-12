@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 colorama = "*"
 email-validator = "*"
+pytest = "*"
 
 [dev-packages]
 
