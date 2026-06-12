@@ -10,7 +10,9 @@
             "id": 41234457236937104893098610510750041287,
             "name": "Darrel",
             "email": "darrel@gmail.com",
-            "projects": []
+            "projects": [
+                "Read"
+            ]
         },
         {
             "id": 326010367394871377741863611642180849584,
@@ -29,6 +31,21 @@
             "tasks": [],
             "users": [
                 "Martin"
+            ]
+        },
+        {
+            "id": 62177494722390079650689758491426598399,
+            "title": "Read",
+            "due_date": "29-7-2026",
+            "tasks": [
+                {
+                    "name": "French",
+                    "description": "Study French",
+                    "complete": false
+                }
+            ],
+            "users": [
+                "Darrel"
             ]
         }
     ]

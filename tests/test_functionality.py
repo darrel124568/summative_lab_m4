@@ -1,5 +1,5 @@
 import pytest
-from models.db import Database_manipulations
+from models.database_manipulations import Database_manipulations
 from models.user import User
 from models.project import Project
 from models.task import Task

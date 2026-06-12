@@ -2,7 +2,7 @@ import argparse
 from models.user import User
 from models.project import Project
 from models.task import Task
-from models.db import Database_manipulations
+from utils.utils import Database_manipulations
 from colorama import Fore
 from email_validator import validate_email, EmailNotValidError
 

@@ -1,4 +1,4 @@
-from models.db import Database_manipulations
+from utils.utils import Database_manipulations
 from colorama import Fore
 
 class Task:

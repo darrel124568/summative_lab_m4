@@ -1,4 +1,4 @@
-from models.db import Database_manipulations
+from utils.utils import Database_manipulations
 from models.database_object import Database_obj
 from colorama import Fore
 from email_validator import validate_email, EmailNotValidError
@@ -11,7 +11,7 @@ class Project(Database_obj):
         self.tasks = tasks if tasks is not None else []
         self.users = users if users is not None else []
 
-    def to_dict(self) -> dict:
+    def to_dict(self):
         return {
             "id": self.id,
             "title": self.title,
