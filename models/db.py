@@ -1,13 +1,12 @@
 import json
-from utils.utils import read
 
-class DatabaseContext:
+class Database_manipulations:
     FILE_NAME = "data.json"
 
     @classmethod
     def load(cls) -> dict:
         try:
-            return read(cls.FILE_NAME)
+            return cls.read(cls.FILE_NAME)
         except (FileNotFoundError, json.JSONDecodeError):
             return {"users": [], "projects": []}
 
@@ -15,3 +14,8 @@ class DatabaseContext:
     def save(cls, data: dict):
         with open(cls.FILE_NAME, "w") as f:
             json.dump(data, f, indent=4)
+
+    @classmethod
+    def read(cls, filename):
+        with open(cls.FILE_NAME) as f:
+            return(json.load(f))

@@ -3,8 +3,45 @@
         {
             "name": "Darrel",
             "email": "darrel124568@gmail.com",
+            "projects": [
+                "CLI",
+                "Read"
+            ]
+        },
+        {
+            "name": "John",
+            "email": "johndoe@gmail.com",
             "projects": []
         }
     ],
-    "projects": []
+    "projects": [
+        {
+            "title": "CLI",
+            "due_date": "15-07-2026",
+            "tasks": [
+                {
+                    "name": "Make a CLI tool",
+                    "description": "",
+                    "complete": true
+                }
+            ],
+            "users": [
+                "Darrel"
+            ]
+        },
+        {
+            "title": "Read",
+            "due_date": "7-7-2026",
+            "tasks": [
+                {
+                    "name": "Moringa School content",
+                    "description": "Read module 4 content",
+                    "complete": true
+                }
+            ],
+            "users": [
+                "Darrel"
+            ]
+        }
+    ]
 }
